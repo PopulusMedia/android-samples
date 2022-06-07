@@ -1,0 +1,27 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url uri("https://maven.pkg.github.com/populusmedia/popcorn-android")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+            content {
+                includeGroupByRegex "com.media.populus.*"
+            }
+        }
+    }
+}
+rootProject.name = "WebViewTest"
+include ':app'
+include ':populus-android'
